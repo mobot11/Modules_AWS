@@ -1,0 +1,11 @@
+{
+  "name": "modules_amazon",
+  "version": "0.1.0",
+  "description": "A http express module that writes to AWS servers",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dylan Moberg",
+  "license": "MIT"
+}
