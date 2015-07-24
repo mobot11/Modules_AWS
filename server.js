@@ -15,6 +15,7 @@ console.log('creating connection to database');
 
 var apiRouter = express.Router();
 require('./routes/userRoutes')(apiRouter);
+require('./routes/fileRoutes')(apiRouter);
 
 app.use('/api', apiRouter);
 

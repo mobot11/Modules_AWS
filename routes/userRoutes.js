@@ -10,6 +10,40 @@ module.exports = function(router) {
 	      			res.status(500).json({msg: 'server error'});
 	      		}
 	      		res.json(data)
+	      		console.log(data);
 	      	});
 	      })
+
+	      .post(function(req,res) {
+	      	var user = new User(req.body);
+	      	user.save(function(err,data) {
+	      		if(err) {
+	      			res.status(500).json({msg: 'server error'});
+	      		}
+	      		res.json({msg: 'responding to post'});
+	      	})
+	      });
+
+	router.route('/users/:id')
+	      .get(function(req,res) {
+	      	console.log(req.params.id);
+	      	var id = req.params.id;
+              User.findById(id)       
+	      	    .populate('files')
+	      	    .exec(function(err,doc) {
+	      	    	res.json(doc)
+	      	    	console.log(doc);
+	      	    })
+	      })
+	      .delete(function(req,res) {
+	      	var id = req.params.id;
+	      	User.findByIdAndRemove(id, function(err,data) {
+	      		if(err) {
+	      			res.status(500).json({msg: 'server error'})
+	      		}
+	      		res.json(data);
+	      		console.log(data);
+	      	})
+	      })
+	      
 }
