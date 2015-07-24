@@ -8,3 +8,5 @@ var userSchema = Schema ({
 });
 
 module.exports = mongoose.model('User', userSchema);
+
+// superagent localhost:8080/api/files post '{"
