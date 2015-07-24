@@ -7,5 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dylan Moberg",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "mongoose": "^4.0.8"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "chai-http": "^1.0.0",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-mocha": "^2.1.3"
+  }
 }
