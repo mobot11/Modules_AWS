@@ -28,13 +28,27 @@ module.exports = function(router) {
 	      .get(function(req,res) {
 	      	console.log(req.params.id);
 	      	var id = req.params.id;
-              User.findById(id)       
-	      	    .populate('files')
-	      	    .exec(function(err,doc) {
-	      	    	res.json(doc)
-	      	    	console.log(doc);
-	      	    })
+           User.findById(id)       
+	      	   .populate('files')
+	      	   .exec(function(err,doc) {
+	      	      res.json(doc)
+	      	      console.log(doc);
+	      	 })
 	      })
+
+	      .patch(function(req,res) {
+	      	var id = req.body.id;
+	      	var data =req.body;
+	      	console.log(id);
+	      	
+	      	User.findOneAndUpdate({_id: id}, data, function(err,doc) {
+          	if(err) {
+          		res.status(500).json({msg: 'internal server error'});
+          	}
+          	res.json(doc);
+	      	})
+	      })
+
 	      .delete(function(req,res) {
 	      	var id = req.params.id;
 	      	User.findByIdAndRemove(id, function(err,data) {

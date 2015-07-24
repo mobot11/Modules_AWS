@@ -6,17 +6,17 @@ chai.use(chaiHTTP);
 
 
 
-describe('/api/users',function () {
-	it('should respond to a get request', function(done) {
-    chai.request('localhost:8080')
-    .get('/api/users')
-    .end(function (err, res) {
-    	expect(err).to.be.null
-    	expect(res).to.have.status(200)
-    	done()
-    })
-	})
-})
+// describe('/api/users',function () {
+// 	it('should respond to a get request', function(done) {
+//     chai.request('localhost:8080')
+//     .get('/api/users')
+//     .end(function (err, res) {
+//     	expect(err).to.be.null
+//     	expect(res).to.have.status(200)
+//     	done()
+//     })
+// 	})
+// })
 
 // describe('/api/users/:id', function() {
 // 	it('should respond to a get request', function(done) {
@@ -60,7 +60,7 @@ describe('/api/users',function () {
 // 	})
 // })
 
-// describe('api/files', function() {
+// describe('/api/files', function() {
 // 	it('should respond to a post request', function(done) {
 // 		chai.request('localhost:8080')
 // 		.post('/api/files')
@@ -76,6 +76,22 @@ describe('/api/users',function () {
 // 		})
 // 	})
 // })
+
+describe('/api/users/:id', function() {
+	it('should respond to a patch request', function(done) {
+		chai.request('localhost:8080')
+		.patch('/api/users/:id')
+		.send({
+			id: '55b1c52d714f720d3bc258ed',
+			email: 'changedThroughTest' 
+		})
+		.end(function(err,res) {
+			expect(err).to.be.null;
+			expect(res).to.have.status(200);
+			done();
+		})
+	})
+})
 // db.users.update({_id: ObjectId("55b1c52d714f720d3bc258ed")}, {$set: {"files": ObjectId("55b1c6a6534419f23c56c580")}})
 
 
