@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var fileSchema = mongoose.Schema({
-	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+var fileSchema = new Schema({
+	_user: { type: Schema.ObjectId, ref: 'User'},
+	url: String,
 	fileName: String,
 	fileData: String
 });
