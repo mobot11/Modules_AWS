@@ -34,11 +34,11 @@ module.exports = function(router) {
 	      	// console.log(req.params.id);
 	      	var id = req.params.id;
            User.findById(id)       
-	      	   .populate('Files')
+	      	   .populate('files')
 	      	   .exec(function(err,doc) {
 	      	      res.json(doc)
-	      	      console.log(doc);
-	      	      console.log(doc.files);
+	      	      // console.log(doc);
+	      	      // console.log(doc.files);
 	      	 })
 	      })
 
@@ -69,7 +69,7 @@ module.exports = function(router) {
 	      .get(function(req,res) {
 	      	var id = req.params.id;
 	      	User.findById(id)
-	      	.populate('Files')
+	      	.populate('files')
 	      	.exec(function(err,doc) {
 	      		// console.log(doc);
 	      		// console.log(doc.files);
@@ -97,8 +97,7 @@ module.exports = function(router) {
 	      		}
 	      		else {
 	      			// console.log('successfully uploaded data to mongofiles11/' + newFileName);
-	      			// console.log(newFileName);
-	      			// console.log(newFileData);
+
 	      			var fileUrl = s3Url + userId + newFileName;
 	      			var newFile = new File({
 	      				_user: userId,
@@ -130,6 +129,8 @@ module.exports = function(router) {
 	      		}
 	      	})
 	      })
+
+  // router.route('/users/:id/files/:file')
 }
 	      
 

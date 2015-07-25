@@ -94,22 +94,22 @@ chai.use(chaiHTTP);
 // 	})
 // })
 
-// describe('/api/users/:id/files', function() {
-//   it('should respond to a get request', function(done) {
-//   	chai.request('localhost:8080')
-//   	.get('/api/users/55b2e3f816470a919a439bf9/files')
-//   	.end(function(err,res) {
-//   		expect(err).to.be.null;
-//   		expect(res).to.have.status(200);
-//   		done();
-//   	})
-//   })
-// })
+describe('/api/users/:id/files', function() {
+  it('should respond to a get request', function(done) {
+  	chai.request('localhost:8080')
+  	.get('/api/users/55b2f6301514db1cac0269ab/files')
+  	.end(function(err,res) {
+  		expect(err).to.be.null;
+  		expect(res).to.have.status(200);
+  		done();
+  	})
+  })
+})
 
 // describe('/api/users/:id/files', function() {
 //   it('should respond to a post request', function(done) {
 //   	chai.request('localhost:8080')
-//   	.post('/api/users/55b2e3f816470a919a439bf9/files')
+//   	.post('/api/users/55b2f6301514db1cac0269ab/files')
 //   	.send({
 //   		fileName: 'Testing123',
 //   		fileData: 'all the datas'
