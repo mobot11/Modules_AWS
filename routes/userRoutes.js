@@ -71,7 +71,7 @@ module.exports = function(router) {
 	      	.exec(function(err,doc) {
 	      		// console.log(doc);
 	      		// console.log(doc.files);
-	      		res.json(doc.files);
+	      		res.json(doc);
 	      	})
 	      })
 

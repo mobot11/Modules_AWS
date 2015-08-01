@@ -122,14 +122,42 @@ describe('/api/users/:id/files', function() {
   })
 })
 
-// describe('/api/user/:id/files/:file', function () {
-// 	it ('should respond to a get request', function() {
-// 		chai.request('localhost:8080')
-// 		.get('/')
-// 	})
-// })
+describe('/api/user/:id/files/:file', function () {
+	it ('should respond to a get request', function() {
+		chai.request('localhost:8080')
+		.get('/api/users/55b2f6301514db1cac0269ab/files/testing123')
+	
+	.end(function(err,res) {
+		expect(err).to.be.null;
+		expect(res).to.have.status(200);
+	})
+})
+})
+describe('/api/user/:id/files/:file', function () {
+	it ('should respond to a get request', function() {
+		chai.request('localhost:8080')
+		.put('/api/users/55b2f6301514db1cac0269ab/files/testing123')
 
+	.send({
+		fileData: 'changed the data'
+	})
+	.end(function(err,res) {
+		expect(err).to.be.null;
+		expect(res).to.have.status(200);
+	})
+})
+	})
+describe('/api/user/:id/files/:file', function () {
+	it ('should respond to a get request', function() {
+		chai.request('localhost:8080')
+		.delete('/api/users/55b2f6301514db1cac0269ab/files/testing123')
 
+	.end(function(err,res) {
+		expect(err).to.be.null;
+		expect(res).to.have.status(200);
+	})
+})
+})
 
 
 
