@@ -9,7 +9,7 @@ var PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-mongoose.connect('mongodb://localhost');
+mongoose.connect(process.env.MONGOLAB_URI ||'mongodb://localhost');
 
 console.log('creating connection to database');
 

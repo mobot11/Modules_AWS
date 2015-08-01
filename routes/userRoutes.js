@@ -37,8 +37,6 @@ module.exports = function(router) {
 	      	   .populate('files')
 	      	   .exec(function(err,doc) {
 	      	      res.json(doc)
-	      	      // console.log(doc);
-	      	      // console.log(doc.files);
 	      	 })
 	      })
 
@@ -74,7 +72,6 @@ module.exports = function(router) {
 	      		// console.log(doc);
 	      		// console.log(doc.files);
 	      		res.json(doc.files);
-	      		console.log(doc.files);
 	      	})
 	      })
 
@@ -130,7 +127,60 @@ module.exports = function(router) {
 	      	})
 	      })
 
-  // router.route('/users/:id/files/:file')
+  router.route('/users/:id/files/:file')
+
+  .get(function(err,res) {
+  	var userId = req.params.id;
+  	var userFile = req.pararms.file;
+  	var S3 = new AWS.S3();
+  	var params = {
+  		Bucket: userId,
+  		Key: userFile
+  	}
+
+  	S3.getObject(params, function(err,data) {
+  		if(err) {
+  			res.status(500).json(err);
+  		}
+  		res.json(data);
+  	})
+
+  })
+
+  .put(function(err,res) {
+  	var userId = req.params.id;
+  	var userFile = req.params.file;
+  	var updateFile = req.body;
+
+  	var params = {
+  		Bucket: userId,
+  		Key: userFile,
+  		Body: updateFile
+  	}
+    S3.upload(params, function(err,data) {
+    	if (err) {
+    		res.status(500).json(err);
+    	}
+    	res.json({msg: data.key + ' was updated'})
+    })
+  })
+
+  .delete(function(err,res) {
+  	var userId = req.params.id;
+  	var userFile = req.params.file;
+
+  	var params = {
+  		Bucket: userId,
+  		Key: userFile
+  	}
+
+  	S3.deleteObject(params, function(err,data) {
+  		if (err) {
+  			res.status(500).json(err)
+  		}
+  		res.json({msg: 'File was deleted'})
+  	})
+  })
 }
 	      
 
